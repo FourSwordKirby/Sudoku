@@ -6,7 +6,7 @@ using System.Linq;
 //CREDITS TO SHELDON L. COOPER
 //http://stackoverflow.com/questions/3588962/brute-force-algorithm-for-creation-of-sudoku-board
 
-public class SudokuGenerator : MonoBehaviour {
+public class SudokuModel : MonoBehaviour {
 
     //Tutorial Boards
     //mySudokuBoard = new List<List<int>>(9);
@@ -20,11 +20,6 @@ public class SudokuGenerator : MonoBehaviour {
     //mySudokuBoard.Add(new List<int>() { 8, 5, 9, 7, 6, 4, 1, 3, 2 });
     //mySudokuBoard.Add(new List<int>() { 3, 4, 2, 1, 8, 9, 7, 6, 5 });
 
-    void Start()
-    {
-        generateBoard();
-    }
-
     public static int[,] generateBoard()
     {
         int r = Random.Range(0, 9);//and.nextInt(9);
@@ -34,7 +29,64 @@ public class SudokuGenerator : MonoBehaviour {
         board.set(r, c, value);
         solve(board, 0);
 
-        return(board.getBoard());
+        int [,] returnBoard = board.getBoard();
+        for (r = 0; r < 9; r++)
+        {
+            for (c = 0; c < 9; c++)
+            {
+                returnBoard[r, c] --;
+            }
+        }
+        return returnBoard;
+    }
+
+    //Returns a list of positions that need to be fixed & the number of things wrong in that position 
+    public static List<Vector3> resolveBoard(int[,] board)
+    {
+        List<Vector3> problemSpaces = new List<Vector3>();
+
+        Dictionary<int, List<int>> rowCounters = new Dictionary<int, List<int>>();
+        Dictionary<int, List<int>> colCounters = new Dictionary<int, List<int>>();
+        Dictionary<int, List<int>> squareCounters = new Dictionary<int, List<int>>();
+
+        for (int i = 0; i < 9; i++)
+        {
+            rowCounters[i] = new List<int>();
+            colCounters[i] = new List<int>();
+            squareCounters[i] = new List<int>();
+        }
+
+        for (int r = 0; r < 9; r++)
+        {
+            for (int c = 0; c < 9; c++)
+            {
+                int entry = board[r, c];
+                rowCounters[r].Add(entry);
+                colCounters[c].Add(entry);
+                squareCounters[r/3 + (c/3) * 3].Add(entry);
+            }
+        }
+
+        for (int r = 0; r < 9; r++)
+        {
+            for (int c = 0; c < 9; c++)
+            {
+                int entry = board[r, c];
+                int problemCount = 0;
+
+                if(rowCounters[r].FindAll(delegate(int i) { return i == entry; }).Count > 1)
+                    problemCount++;
+                if (colCounters[c].FindAll(delegate(int i) { return i == entry; }).Count > 1)
+                    problemCount++;
+                if (squareCounters[r / 3 + (c / 3) * 3].FindAll(delegate(int i) { return i == entry; }).Count > 1)
+                    problemCount++;
+
+                if(problemCount != 0)
+                    problemSpaces.Add(new Vector3(r, c, problemCount));
+            }
+        }
+
+        return problemSpaces;
     }
 
     private static bool solve(Board board, int at) {
@@ -61,63 +113,6 @@ public class SudokuGenerator : MonoBehaviour {
         return false;
     }
 
-    public bool isValidBoard(List<List<int>> SudokuBoard)
-    {
-        Dictionary<int, List<int>> itemXPos = new Dictionary<int, List<int>>();
-        Dictionary<int, List<int>> itemYPos = new Dictionary<int, List<int>>();
-
-        for (int i = 0; i < SudokuBoard.Count; i++)
-        {
-            itemXPos.Add(i, new List<int>());
-            itemYPos.Add(i, new List<int>());
-        }
-
-        for (int i = 0; i < SudokuBoard.Count; i++)
-        {
-            for (int j = 0; j < SudokuBoard[i].Count; j++)
-            {
-                itemXPos[SudokuBoard[i][j]].Add(j);
-                itemYPos[SudokuBoard[i][j]].Add(i);
-            }
-        }
-
-        //Check rows
-        foreach (int entry in itemXPos.Keys)
-        {
-            if (itemXPos[entry].Count < 9)
-                return false;
-        }
-
-        //Check columns
-        foreach (int entry in itemXPos.Keys)
-        {
-            if (itemYPos[entry].Count < 9)
-                return false;
-        }
-
-        //Check squares
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                Dictionary<int, bool> squareDictionary = new Dictionary<int, bool>();
-                squareDictionary.Add(SudokuBoard[3 * i][3 * j], true);
-                squareDictionary.Add(SudokuBoard[3 * i][3 * j + 1], true);
-                squareDictionary.Add(SudokuBoard[3 * i][3 * j + 2], true);
-                squareDictionary.Add(SudokuBoard[3 * i + 1][3 * j], true);
-                squareDictionary.Add(SudokuBoard[3 * i + 1][3 * j + 1], true);
-                squareDictionary.Add(SudokuBoard[3 * i + 1][3 * j + 2], true);
-                squareDictionary.Add(SudokuBoard[3 * i + 2][3 * j], true);
-                squareDictionary.Add(SudokuBoard[3 * i + 2][3 * j + 1], true);
-                squareDictionary.Add(SudokuBoard[3 * i + 2][3 * j + 2], true);
-
-                if (squareDictionary.Keys.Count != 9)
-                    return false;
-            }
-        }
-
-        return true;
-    }
 
     class Board {
         private int[,] board = new int[9, 9];
