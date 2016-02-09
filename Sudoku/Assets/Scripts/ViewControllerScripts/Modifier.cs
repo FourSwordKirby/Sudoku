@@ -21,6 +21,8 @@ public class Modifier : MonoBehaviour
     public Vector3 residentScale;
 
 
+    private Vector3 z_offset = new Vector3(0, 0, -1.0f);
+
     /*self-references*/
     private SpriteRenderer spriteRender;
     private Rigidbody2D selfBody;
@@ -28,9 +30,12 @@ public class Modifier : MonoBehaviour
     public Collider2D collisionBox;
 
 
+
     // Use this for initialization
     void Awake()
     {
+        this.transform.position += z_offset;
+
         originalPosition = Vector3.zero;
         residence = originalResidence;
         selected = false;
@@ -44,22 +49,18 @@ public class Modifier : MonoBehaviour
     void Update()
     {
         //Uses value-1 because we're 0 indexing
-        spriteRender.sprite = modSprites[value-1];
+        spriteRender.sprite = modSprites[value+3];
     }
 
     public void pickUp()
     {
-        Debug.Log("being picked up");
         this.collisionBox.enabled = false;
         this.selfBody.isKinematic = true;
     }
 
-    public void spawnInRoom()
+    public void spawnInRoom(Residence room)
     {
-        if(residence != null)
-            this.transform.position = residence.transform.position;
-        else
-            this.transform.position = originalResidence.transform.position;
+        this.transform.position = room.transform.position + z_offset;
         this.collisionBox.enabled = true;
         this.selfBody.isKinematic = false;
     }
@@ -90,18 +91,19 @@ public class Modifier : MonoBehaviour
     void OnMouseUp()
     {
         selected = false;
-        spawnInRoom();
 
-        if (residence != null && residence.isApartment())
+        if(residence != null && residence.isApartment())
         {
-            this.spriteRender.color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-            GameManager.sudokuBoard.applyMod(value, residence.row, residence.col);
+            int x = residence.row;
+            int y = residence.col;
+            if (!(GameManager.sudokuBoard.getValue(x, y) + value < 0 || GameManager.sudokuBoard.getValue(x, y) + value > 8))
+            {
+                GameManager.sudokuBoard.applyMod(value, residence.row, residence.col);
+                spawnInRoom(residence);
+                return;
+            }
         }
-        else if (residence == null)
-        {
-            this.transform.position = originalPosition;
-            originalPosition = Vector3.zero;
-        }
+        spawnInRoom(originalResidence);
     }
 
     void OnMouseEnter()
@@ -119,16 +121,15 @@ public class Modifier : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         Residence apt = col.gameObject.GetComponent<Residence>();
-        Debug.Log("enter");
         if (apt != null)
         {
-            //highlights the apt we entered
-            apt.select();
             //unhighlights other apts if they exist
             if (residence != null)
             {
                 residence.deselect();
             }
+            //highlights the apt we entered
+            apt.select();
             //sets the new residence
             residence = apt;
         }

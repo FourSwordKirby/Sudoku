@@ -14,7 +14,7 @@ TagManager:
   - 
   - 
   - Residents
-  - 
+  - Walls
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Residents
+    uniqueID: 590347563
     locked: 0

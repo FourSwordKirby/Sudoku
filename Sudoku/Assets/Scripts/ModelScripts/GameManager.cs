@@ -16,7 +16,14 @@ public class GameManager : MonoBehaviour {
         int[] modifiers = createModifiers(4);
         foreach (int mod in modifiers)
         {
-            sudokuBoard.initializeMod(mod, Random.Range(0, 9), Random.Range(0, 9));
+            int x = Random.Range(0, 9);
+            int y = Random.Range(0, 9);
+
+            while (sudokuBoard.getValue(x, y) - mod < 0 || sudokuBoard.getValue(x, y) - mod > 8)
+                x = Random.Range(0, 9);
+                y = Random.Range(0, 9);
+
+            sudokuBoard.initializeMod(mod, x, y);
             modPanel.addMod(mod);
         }
 	}
@@ -30,10 +37,10 @@ public class GameManager : MonoBehaviour {
     {
         int[] numberModifiers = new int[modifierCount];
         for(int i = 0; i < modifierCount; i++){
-            //if(Random.Range(0.0f, 1.0f) > 0.5f)
+            if(Random.Range(0.0f, 1.0f) > 0.5f)
                 numberModifiers[i] = Random.Range(1, 3);
-            //else
-                //numberModifiers[i] = -Random.Range(1, 9);
+            else
+                numberModifiers[i] = -Random.Range(1, 3);
         }
         return numberModifiers;
     }

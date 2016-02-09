@@ -27,7 +27,7 @@ public class ModifierPanel : MonoBehaviour {
         apt.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - Modifiers.Count * spacing);
 
         apt.GetComponent<Residence>().type = Parameters.ResidenceType.cell;
-        apt.GetComponent<Residence>().happiness = mod;
+        apt.GetComponent<Residence>().happiness = 0;
         apt.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
         GameObject modifier = GameObject.Instantiate(ModPrefab);

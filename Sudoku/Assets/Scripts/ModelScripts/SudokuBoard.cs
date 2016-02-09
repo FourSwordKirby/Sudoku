@@ -89,4 +89,9 @@ public class SudokuBoard: MonoBehaviour {
             Apartments[x, y].markUnresolved(severity);
         }
     }
+
+    public int getValue(int x, int y)
+    {
+        return sudokuBoard[x, y];
+    }
 }

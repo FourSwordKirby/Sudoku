@@ -13,10 +13,12 @@ public class Residence : MonoBehaviour {
 
     /*self-references*/
     private SpriteRenderer spriteRender;
+    public Collider2D triggerBox;
 
 	// Use this for initialization
 	void Awake () {
         spriteRender = this.GetComponent<SpriteRenderer>();
+        triggerBox = this.GetComponent<Collider2D>();
 	}
 	
 	// Update is called once per frame
@@ -56,7 +58,7 @@ public class Residence : MonoBehaviour {
     }
 
     //Temporary graphical measures
-    void OnMouseEnter()
+    /*void OnMouseEnter()
     {
         spriteRender.color = Color.black;
     }
@@ -64,7 +66,7 @@ public class Residence : MonoBehaviour {
     void OnMouseExit()
     {
         spriteRender.color = Color.white;
-    }
+    }*/
 
     public bool isApartment()
     {

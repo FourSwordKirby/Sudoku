@@ -30,7 +30,7 @@ GameObject:
   - 61: {fileID: 6159494}
   - 61: {fileID: 6111118}
   - 61: {fileID: 6186584}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RoomBoundaries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 21300012, guid: 2d17c6bf5eafad54ea8ed7af026ac5d7, type: 3}
   - {fileID: 21300014, guid: 2d17c6bf5eafad54ea8ed7af026ac5d7, type: 3}
   - {fileID: 21300016, guid: 2d17c6bf5eafad54ea8ed7af026ac5d7, type: 3}
+  triggerBox: {fileID: 0}
 --- !u!212 &21296488
 SpriteRenderer:
   m_ObjectHideFlags: 1
