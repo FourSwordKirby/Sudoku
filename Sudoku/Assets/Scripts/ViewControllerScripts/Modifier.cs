@@ -49,7 +49,27 @@ public class Modifier : MonoBehaviour
     void Update()
     {
         //Uses value-1 because we're 0 indexing
-        spriteRender.sprite = modSprites[value+3];
+        switch (value)
+        {
+            case 1: 
+                spriteRender.sprite = modSprites[0];
+                break;
+            case -1:
+                spriteRender.sprite = modSprites[1];
+                break;
+            case 2:
+                spriteRender.sprite = modSprites[2];
+                break;
+            case -2:
+                spriteRender.sprite = modSprites[3];
+                break;
+            case 3:
+                spriteRender.sprite = modSprites[4];
+                break;
+            case -3:
+                spriteRender.sprite = modSprites[5];
+                break;
+        }
     }
 
     public void pickUp()
