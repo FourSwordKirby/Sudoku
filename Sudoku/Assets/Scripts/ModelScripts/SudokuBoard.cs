@@ -5,7 +5,8 @@ using System.Linq;
 
 public class SudokuBoard: MonoBehaviour {
     private int[,] sudokuBoard;
-    private Apartment[,] Apartments;
+    private Residence[,] Apartments;
+    private List<int>[,] modifiers;
 
     public GameObject AptPrefab;
 
@@ -21,7 +22,7 @@ public class SudokuBoard: MonoBehaviour {
     {
         sudokuBoard = SudokuModel.generateBoard();
 
-        Apartments = new Apartment[9, 9];
+        Apartments = new Residence[9, 9];
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 9; j++)
@@ -29,11 +30,20 @@ public class SudokuBoard: MonoBehaviour {
                 GameObject apartment = GameObject.Instantiate(AptPrefab);
                 apartment.transform.SetParent(this.transform);
                 apartment.transform.localPosition = new Vector2(i * aptWidth, j * -aptHeight);
-                Apartments[i, j] = apartment.GetComponent<Apartment>();
+                Apartments[i, j] = apartment.GetComponent<Residence>();
 
-                apartment.GetComponent<Apartment>().happiness = sudokuBoard[i, j];
-                apartment.GetComponent<Apartment>().row = i;
-                apartment.GetComponent<Apartment>().col = j;
+                apartment.GetComponent<Residence>().happiness = sudokuBoard[i, j];
+                apartment.GetComponent<Residence>().row = i;
+                apartment.GetComponent<Residence>().col = j;
+            }
+        }
+
+        modifiers = new List<int>[9, 9];
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                modifiers[i, j] = new List<int>();
             }
         }
     }
@@ -49,6 +59,7 @@ public class SudokuBoard: MonoBehaviour {
     {
         sudokuBoard[x, y] = Mathf.Clamp(sudokuBoard[x, y] + mod, 0, 8);
         Apartments[x, y].happiness = sudokuBoard[x, y];
+        modifiers[x, y].Add(mod) ;
         checkBoard();
     }
 
@@ -56,12 +67,20 @@ public class SudokuBoard: MonoBehaviour {
     {
         sudokuBoard[x, y] = Mathf.Clamp(sudokuBoard[x, y] - mod, 0, 8);
         Apartments[x, y].happiness = sudokuBoard[x, y];
+        modifiers[x, y].Remove(mod);
         checkBoard();
     }
 
     public void checkBoard()
     {
         List<Vector3> problemSpaces = SudokuModel.resolveBoard(sudokuBoard);
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                Apartments[i, j].markResolved();
+            }
+        }
         foreach (Vector3 problem in problemSpaces)
         {
             int x = (int)problem.x;
