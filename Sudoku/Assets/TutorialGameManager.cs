@@ -30,6 +30,12 @@ public class TutorialGameManager : MonoBehaviour {
             dialogBox.displayDialog(name, dialog[dialogCounter]);
             dialogCounter++;
         }
+        if(dialogCounter == dialog.Length)
+        {
+            Application.LoadLevel("SudokuScene");
+
+
+        }
         /*
         if (Controls.interactInputDown())
         {
