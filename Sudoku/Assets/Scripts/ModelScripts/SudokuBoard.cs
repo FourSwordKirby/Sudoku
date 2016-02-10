@@ -88,6 +88,9 @@ public class SudokuBoard: MonoBehaviour {
             int severity = (int)problem.z;
             Apartments[x, y].markUnresolved(severity);
         }
+
+        if (problemSpaces.Count == 0)
+            GameManager.Win();
     }
 
     public int getValue(int x, int y)

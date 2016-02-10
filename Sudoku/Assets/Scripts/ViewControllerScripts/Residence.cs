@@ -10,51 +10,55 @@ public class Residence : MonoBehaviour {
     public int col;
     
     public Sprite[] numberSprites;
+    public Sprite[] roomSprites;
+    public Animator[] residentsAnimators;
 
     /*self-references*/
-    private SpriteRenderer spriteRender;
-    public Collider2D triggerBox;
+    public SpriteRenderer numberRenderer;
+    public SpriteRenderer roomRenderer;
+    public Animator residentRenderer;
+
+    private Collider2D triggerBox;
 
 	// Use this for initialization
 	void Awake () {
-        spriteRender = this.GetComponent<SpriteRenderer>();
         triggerBox = this.GetComponent<Collider2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        spriteRender.sprite = numberSprites[happiness];
+        numberRenderer.sprite = numberSprites[happiness];
 	}
 
     public void select()
     {
-        spriteRender.color = Color.cyan;
+        roomRenderer.color = Color.cyan;
     }
 
     public void deselect()
     {
-        spriteRender.color = Color.white;
+        roomRenderer.color = Color.white;
     }
 
     public void markUnresolved(int severity)
     {
         if (severity == 1)
         {
-            spriteRender.color = Color.blue;
+            roomRenderer.color = Color.blue;
         }
         if (severity == 2)
         {
-            spriteRender.color = Color.green;
+            roomRenderer.color = Color.green;
         }
         if (severity == 3)
         {
-            spriteRender.color = Color.red;
+            roomRenderer.color = Color.red;
         }
     }
 
     public void markResolved()
     {
-        spriteRender.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        roomRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
     //Temporary graphical measures

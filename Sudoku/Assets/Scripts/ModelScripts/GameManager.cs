@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
         modPanel = GameObject.FindObjectOfType<ModifierPanel>();
 
         sudokuBoard.instantiateBoard();
-        int[] modifiers = createModifiers(4);
+        int[] modifiers = createModifiers(1);
         foreach (int mod in modifiers)
         {
             int x = Random.Range(0, 9);
@@ -28,10 +28,11 @@ public class GameManager : MonoBehaviour {
         }
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	//Plays in the win condition
+    public static void Win()
+    {
+        Debug.Log("Win");
+    }
 
     int[] createModifiers(int modifierCount)
     {

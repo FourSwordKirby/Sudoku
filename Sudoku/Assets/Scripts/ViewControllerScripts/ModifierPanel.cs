@@ -48,7 +48,6 @@ public class ModifierPanel : MonoBehaviour {
                 apt.GetComponent<Residence>().happiness = 14;
                 break;
         }
-        apt.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 
         GameObject modifier = GameObject.Instantiate(ModPrefab);
         modifier.transform.SetParent(this.transform);
