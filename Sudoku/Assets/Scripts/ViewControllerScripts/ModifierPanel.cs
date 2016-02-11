@@ -9,6 +9,7 @@ public class ModifierPanel : MonoBehaviour {
     public GameObject AptPrefab;
 
     public float spacing;
+    public bool isTutorial;
 
 	// Use this for initialization
 	void Awake () {
@@ -29,25 +30,26 @@ public class ModifierPanel : MonoBehaviour {
         apt.GetComponent<Residence>().type = Parameters.ResidenceType.cell;
         switch (mod)
         {
-            case 1:
+            case -3:
                 apt.GetComponent<Residence>().happiness = 9;
                 break;
-            case -1:
+            case -2:
                 apt.GetComponent<Residence>().happiness = 10;
                 break;
-            case 2:
+            case -1:
                 apt.GetComponent<Residence>().happiness = 11;
                 break;
-            case -2:
+            case 1:
                 apt.GetComponent<Residence>().happiness = 12;
                 break;
-            case 3:
+            case 2:
                 apt.GetComponent<Residence>().happiness = 13;
                 break;
-            case -3:
+            case 3:
                 apt.GetComponent<Residence>().happiness = 14;
                 break;
         }
+        apt.GetComponent<Residence>().originalColor = Color.white;
 
         GameObject modifier = GameObject.Instantiate(ModPrefab);
         modifier.transform.SetParent(this.transform);
@@ -55,7 +57,25 @@ public class ModifierPanel : MonoBehaviour {
         modifier.GetComponent<Modifier>().value = mod;
         modifier.GetComponent<Modifier>().originalResidence = apt.GetComponent<Residence>();
         modifier.GetComponent<Modifier>().spawnInRoom(apt.GetComponent<Residence>());
+        modifier.GetComponent<Modifier>().isTutorial = isTutorial;
 
         Modifiers.Add(modifier.GetComponent<Modifier>());
     }
+
+    //broken don't use
+    /*
+    public void resetMods()
+    {
+        foreach(Modifier mod in Modifiers)
+        {
+            if (mod.residence != mod.originalResidence)
+            {
+
+                GameManager.sudokuBoard.applyMod(-mod.value, mod.residence.row, mod.residence.col);
+                mod.residence = mod.originalResidence;
+            }
+            mod.spawnInRoom(mod.originalResidence);
+        }
+    }
+     */
 }

@@ -43,7 +43,7 @@ Transform:
   m_GameObject: {fileID: 151728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.66, y: -0.05, z: 1}
-  m_LocalScale: {x: 0.95929676, y: 0.9592969, z: 0.6395312}
+  m_LocalScale: {x: 2.1958075, y: 2.1958096, z: 1.4638729}
   m_Children:
   - {fileID: 473590}
   m_Father: {fileID: 0}
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 173592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.97187555, y: 0.97187525, z: 0.97187525}
   m_Children: []
   m_Father: {fileID: 458366}
   m_RootOrder: 0
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.3}
+  m_Size: {x: 0.06, y: 0.09}
 --- !u!114 &11489906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,16 +118,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 1
   modSprites:
-  - {fileID: 21300006, guid: d6b183f9276b1c146993efb30c756e0e, type: 3}
-  - {fileID: 21300000, guid: d6b183f9276b1c146993efb30c756e0e, type: 3}
-  - {fileID: 21300008, guid: d6b183f9276b1c146993efb30c756e0e, type: 3}
-  - {fileID: 21300002, guid: d6b183f9276b1c146993efb30c756e0e, type: 3}
-  - {fileID: 21300010, guid: d6b183f9276b1c146993efb30c756e0e, type: 3}
-  - {fileID: 21300004, guid: d6b183f9276b1c146993efb30c756e0e, type: 3}
+  - {fileID: 21300006, guid: d9b9745f5e7cedc49a7c13d8b8b80bfc, type: 3}
+  - {fileID: 21300012, guid: d9b9745f5e7cedc49a7c13d8b8b80bfc, type: 3}
+  - {fileID: 21300022, guid: d9b9745f5e7cedc49a7c13d8b8b80bfc, type: 3}
+  - {fileID: 21300002, guid: d9b9745f5e7cedc49a7c13d8b8b80bfc, type: 3}
+  - {fileID: 21300008, guid: d9b9745f5e7cedc49a7c13d8b8b80bfc, type: 3}
+  - {fileID: 21300016, guid: d9b9745f5e7cedc49a7c13d8b8b80bfc, type: 3}
   originalResidence: {fileID: 0}
   residence: {fileID: 0}
+  selectSound: {fileID: 0}
   pickupScale: {x: 0, y: 0, z: 0}
   residentScale: {x: 0, y: 0, z: 0}
+  isTutorial: 0
   collisionBox: {fileID: 6131758}
 --- !u!212 &21285112
 SpriteRenderer:
@@ -155,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 590347563
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6de487f473402684f89e3c2870ccbac7, type: 3}
+  m_Sprite: {fileID: 21300006, guid: d9b9745f5e7cedc49a7c13d8b8b80bfc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

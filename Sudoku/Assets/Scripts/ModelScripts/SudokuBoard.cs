@@ -13,6 +13,11 @@ public class SudokuBoard: MonoBehaviour {
     public float aptWidth;
     public float aptHeight;
 
+    public float horizontalDivSize;
+    public float verticalDivSize;
+
+    public bool isTutorial;
+
     void Start()
     {
         
@@ -29,7 +34,7 @@ public class SudokuBoard: MonoBehaviour {
             {
                 GameObject apartment = GameObject.Instantiate(AptPrefab);
                 apartment.transform.SetParent(this.transform);
-                apartment.transform.localPosition = new Vector2(i * aptWidth, j * -aptHeight);
+                apartment.transform.localPosition = new Vector2(i * aptWidth + (i / 3) * horizontalDivSize, j * -aptHeight - (j / 3) * verticalDivSize);
                 Apartments[i, j] = apartment.GetComponent<Residence>();
 
                 apartment.GetComponent<Residence>().happiness = sudokuBoard[i, j];
@@ -89,8 +94,15 @@ public class SudokuBoard: MonoBehaviour {
             Apartments[x, y].markUnresolved(severity);
         }
 
+        Debug.Log(problemSpaces.Count);
+
         if (problemSpaces.Count == 0)
-            GameManager.Win();
+        {
+            if (!isTutorial)
+                GameManager.Win();
+            else
+                TutorialGameManager.Progress();
+        }
     }
 
     public int getValue(int x, int y)

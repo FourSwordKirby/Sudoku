@@ -9,6 +9,8 @@ public class Pause : MonoBehaviour {
     public bool paused;
     public GameObject PauseMenu;
 
+    public DialogBox DialogueBox;
+
     // Use this for initialization
     void Start () {
 	
@@ -24,15 +26,19 @@ public class Pause : MonoBehaviour {
         {
             PauseMenu.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             paused = !paused;
         }
 	}
+    
+    public void TogglePause(){
+        paused = !paused;
+        DialogueBox.displayDialog("", "Time for a Vodka Break!");
+    }
 
     public void Continue()
     {
-
         paused = false;
     }
     public void Restart()

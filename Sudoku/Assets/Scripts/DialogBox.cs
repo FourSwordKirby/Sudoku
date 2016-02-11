@@ -4,10 +4,8 @@ using System.Collections;
 
 
 public class DialogBox : MonoBehaviour {
-    public Text nameLabel;
     public Text dialogField;
 
-    private string name = "";
     private string dialog = "";
     private int dialogTracker = 0;
 
@@ -19,7 +17,6 @@ public class DialogBox : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-        this.nameLabel.text = "";
   	    this.dialogField.text = "";
 	}
 	// Update is called once per frame
@@ -31,11 +28,8 @@ public class DialogBox : MonoBehaviour {
             return;
         }
 
-        this.nameLabel.text = name;
         if (this.dialogField.text != dialog)
         {
-            Debug.Log(this.dialogField.text);
-            Debug.Log(dialog);
             this.dialogField.text += dialog[dialogTracker];
             dialogTracker++;
 
@@ -51,8 +45,6 @@ public class DialogBox : MonoBehaviour {
         this.dialogTracker = 0;
 
         //Prevents the name from flickering
-        if (this.nameLabel.text != name)
-            this.nameLabel.text = "";
         this.dialogField.text = "";
 
         if (displaySpeed == DisplaySpeed.immediate)

@@ -25,6 +25,8 @@ public class Modifier : MonoBehaviour
 
     private Vector3 z_offset = new Vector3(0, 0, -1.0f);
 
+    public bool isTutorial;
+
     /*self-references*/
     private SpriteRenderer spriteRender;
     private Rigidbody2D selfBody;
@@ -53,22 +55,22 @@ public class Modifier : MonoBehaviour
         //Uses value-1 because we're 0 indexing
         switch (value)
         {
-            case 1: 
+            case -3: 
                 spriteRender.sprite = modSprites[0];
                 break;
-            case -1:
+            case -2:
                 spriteRender.sprite = modSprites[1];
                 break;
-            case 2:
+            case -1:
                 spriteRender.sprite = modSprites[2];
                 break;
-            case -2:
+            case 1:
                 spriteRender.sprite = modSprites[3];
                 break;
-            case 3:
+            case 2:
                 spriteRender.sprite = modSprites[4];
                 break;
-            case -3:
+            case 3:
                 spriteRender.sprite = modSprites[5];
                 break;
         }
@@ -97,12 +99,21 @@ public class Modifier : MonoBehaviour
         selected = true;
         pickUp();
         ///// audio here
-        
-        if (residence != null && residence.isApartment())
-        {
-            GameManager.sudokuBoard.removeMod(value, residence.row, residence.col);
-        }
 
+        if (!isTutorial)
+        {
+            if (residence != null && residence.isApartment())
+            {
+                GameManager.sudokuBoard.removeMod(value, residence.row, residence.col);
+            }
+        }
+        else
+        {
+            if (residence != null && residence.isApartment())
+            {
+                TutorialBoardManager.sudokuBoard.removeMod(value, residence.row, residence.col);
+            }
+        }
         originalPosition = this.transform.position;
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
@@ -124,12 +135,25 @@ public class Modifier : MonoBehaviour
             int x = residence.row;
             int y = residence.col;
             residence.deselect();
-            if (!(GameManager.sudokuBoard.getValue(x, y) + value < 0 || GameManager.sudokuBoard.getValue(x, y) + value > 8))
+            if (!isTutorial)
             {
-                spawnInRoom(residence);
-                GameManager.sudokuBoard.applyMod(value, residence.row, residence.col);
-                return;
+                if (!(GameManager.sudokuBoard.getValue(x, y) + value < 0 || GameManager.sudokuBoard.getValue(x, y) + value > 8))
+                {
+                    spawnInRoom(residence);
+                    GameManager.sudokuBoard.applyMod(value, residence.row, residence.col);
+                    return;
+                }
             }
+            else
+            {
+                if (!(TutorialBoardManager.sudokuBoard.getValue(x, y) + value < 0 || TutorialBoardManager.sudokuBoard.getValue(x, y) + value > 8))
+                {
+                    spawnInRoom(residence);
+                    TutorialBoardManager.sudokuBoard.applyMod(value, residence.row, residence.col);
+                    return;
+                }
+            }
+            
         }
         spawnInRoom(originalResidence);
     }
@@ -173,7 +197,6 @@ public class Modifier : MonoBehaviour
             {
                 apt.deselect();
             }
-            residence = null;
         }
     }
 }
