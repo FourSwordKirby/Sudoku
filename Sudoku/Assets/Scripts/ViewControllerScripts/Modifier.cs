@@ -8,6 +8,8 @@ public class Modifier : MonoBehaviour
     public Residence originalResidence;
     public Residence residence;
 
+    public AudioClip selectSound;
+
     //Dragability stuff
     private Vector3 originalPosition;
 
@@ -90,7 +92,8 @@ public class Modifier : MonoBehaviour
     {
         selected = true;
         pickUp();
-
+        ///// audio here
+        
         if (residence != null && residence.isApartment())
         {
             GameManager.sudokuBoard.removeMod(value, residence.row, residence.col);
