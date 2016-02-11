@@ -28,7 +28,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 473590}
   - 61: {fileID: 6131758}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CollisionBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

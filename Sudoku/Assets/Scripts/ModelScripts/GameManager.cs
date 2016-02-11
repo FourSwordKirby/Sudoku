@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
         modPanel = GameObject.FindObjectOfType<ModifierPanel>();
 
         sudokuBoard.instantiateBoard();
-        int[] modifiers = createModifiers(1);
+        int[] modifiers = createModifiers(3);
         foreach (int mod in modifiers)
         {
             int x = Random.Range(0, 9);

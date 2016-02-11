@@ -18,7 +18,7 @@ public class Residence : MonoBehaviour {
     public SpriteRenderer roomRenderer;
     public Animator residentRenderer;
 
-    private Collider2D triggerBox;
+    public Collider2D triggerBox;
 
 	// Use this for initialization
 	void Awake () {
@@ -48,7 +48,7 @@ public class Residence : MonoBehaviour {
         }
         if (severity == 2)
         {
-            roomRenderer.color = Color.green;
+            roomRenderer.color = Color.blue;
         }
         if (severity == 3)
         {

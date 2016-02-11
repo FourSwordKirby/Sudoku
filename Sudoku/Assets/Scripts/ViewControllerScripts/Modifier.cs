@@ -76,12 +76,16 @@ public class Modifier : MonoBehaviour
 
     public void pickUp()
     {
+        residence.triggerBox.enabled = true;
         this.collisionBox.enabled = false;
         this.selfBody.isKinematic = true;
     }
 
     public void spawnInRoom(Residence room)
     {
+        residence = room;
+        room.triggerBox.enabled = false;
+        room.deselect();
         this.transform.position = room.transform.position + z_offset;
         this.collisionBox.enabled = true;
         this.selfBody.isKinematic = false;
@@ -119,10 +123,11 @@ public class Modifier : MonoBehaviour
         {
             int x = residence.row;
             int y = residence.col;
+            residence.deselect();
             if (!(GameManager.sudokuBoard.getValue(x, y) + value < 0 || GameManager.sudokuBoard.getValue(x, y) + value > 8))
             {
-                GameManager.sudokuBoard.applyMod(value, residence.row, residence.col);
                 spawnInRoom(residence);
+                GameManager.sudokuBoard.applyMod(value, residence.row, residence.col);
                 return;
             }
         }

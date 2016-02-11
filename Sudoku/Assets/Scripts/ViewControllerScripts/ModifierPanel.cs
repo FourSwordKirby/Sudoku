@@ -54,6 +54,7 @@ public class ModifierPanel : MonoBehaviour {
         modifier.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - Modifiers.Count * spacing);
         modifier.GetComponent<Modifier>().value = mod;
         modifier.GetComponent<Modifier>().originalResidence = apt.GetComponent<Residence>();
+        modifier.GetComponent<Modifier>().spawnInRoom(apt.GetComponent<Residence>());
 
         Modifiers.Add(modifier.GetComponent<Modifier>());
     }
