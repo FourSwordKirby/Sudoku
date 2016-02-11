@@ -24,11 +24,32 @@ public class GameManager : MonoBehaviour {
             int y = Random.Range(0, 9);
 
             while (sudokuBoard.getValue(x, y) - mod < 0 || sudokuBoard.getValue(x, y) - mod > 8)
+            {
                 x = Random.Range(0, 9);
                 y = Random.Range(0, 9);
+            }
 
             sudokuBoard.initializeMod(mod, x, y);
             modPanel.addMod(mod);
+        }
+        while (sudokuBoard.isSolved())
+        {
+            sudokuBoard.instantiateBoard();
+            modifiers = createModifiers(Random.Range(3, 6));
+            foreach (int mod in modifiers)
+            {
+                int x = Random.Range(0, 9);
+                int y = Random.Range(0, 9);
+
+                while (sudokuBoard.getValue(x, y) - mod < 0 || sudokuBoard.getValue(x, y) - mod > 8)
+                {
+                    x = Random.Range(0, 9);
+                    y = Random.Range(0, 9);
+                }
+
+                sudokuBoard.initializeMod(mod, x, y);
+                modPanel.addMod(mod);
+            }
         }
 	}
 

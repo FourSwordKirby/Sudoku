@@ -78,7 +78,6 @@ public class Modifier : MonoBehaviour
 
     public void pickUp()
     {
-        residence.triggerBox.enabled = true;
         this.collisionBox.enabled = false;
         this.selfBody.isKinematic = true;
     }
@@ -86,7 +85,6 @@ public class Modifier : MonoBehaviour
     public void spawnInRoom(Residence room)
     {
         residence = room;
-        room.triggerBox.enabled = false;
         room.deselect();
         this.transform.position = room.transform.position + z_offset;
         this.collisionBox.enabled = true;
@@ -181,7 +179,8 @@ public class Modifier : MonoBehaviour
                 residence.deselect();
             }
             //highlights the apt we entered
-            apt.select();
+            if(apt != originalResidence)
+                apt.select();
             //sets the new residence
             residence = apt;
         }

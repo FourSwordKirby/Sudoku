@@ -76,6 +76,13 @@ public class SudokuBoard: MonoBehaviour {
         checkBoard();
     }
 
+    public bool isSolved()
+    {
+        List<Vector3> problemSpaces = SudokuModel.resolveBoard(sudokuBoard);
+
+        return (problemSpaces.Count == 0);
+    }
+
     public void checkBoard()
     {
         List<Vector3> problemSpaces = SudokuModel.resolveBoard(sudokuBoard);
@@ -93,8 +100,6 @@ public class SudokuBoard: MonoBehaviour {
             int severity = (int)problem.z;
             Apartments[x, y].markUnresolved(severity);
         }
-
-        Debug.Log(problemSpaces.Count);
 
         if (problemSpaces.Count == 0)
         {

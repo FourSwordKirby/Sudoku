@@ -11,3 +11,5 @@ EditorBuildSettings:
     path: Assets/Scenes/SudokuScene.unity
   - enabled: 1
     path: Assets/Scenes/TutorialScene.unity
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity

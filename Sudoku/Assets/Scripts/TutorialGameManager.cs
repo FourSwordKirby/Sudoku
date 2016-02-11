@@ -29,14 +29,14 @@ public class TutorialGameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !wait || (waiting && !wait))
+        if (Input.GetMouseButtonDown(0) && dialogBox.dialogField.text == dialog[dialogCounter-1] && !wait || (waiting && !wait))
         {
             waiting = false;
             dialogBox.displayDialog(name, dialog[dialogCounter]);
             dialogCounter++;
             if (dialogCounter == 3)
             {
-                if(TutorialBoardManager.sudokuBoard.getValue(1, 1) == 8)
+                if(TutorialBoardManager.sudokuBoard.getValue(1, 1) == 0)
                     TutorialBoardManager.spawnMod(-1, 0, 0);
                 else
                     TutorialBoardManager.spawnMod(-1, 1, 1);
@@ -44,10 +44,10 @@ public class TutorialGameManager : MonoBehaviour {
             }
             if (dialogCounter == 7)
             {
-                if (TutorialBoardManager.sudokuBoard.getValue(1, 1) == 0)
+                if (TutorialBoardManager.sudokuBoard.getValue(1, 2) == 8)
                     TutorialBoardManager.spawnMod(1, 1, 2);
                 else
-                    TutorialBoardManager.spawnMod(1, 0, 2);
+                    TutorialBoardManager.spawnMod(1, 0, 0);
                 TutorialBoardManager.modPanel.gameObject.SetActive(false);
             }
         }
