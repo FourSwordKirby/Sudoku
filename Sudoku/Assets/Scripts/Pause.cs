@@ -28,7 +28,7 @@ public class Pause : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            paused = !paused;
+            TogglePause();
         }
 	}
     
