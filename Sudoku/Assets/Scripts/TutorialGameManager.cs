@@ -45,9 +45,9 @@ public class TutorialGameManager : MonoBehaviour {
             if (dialogCounter == 7)
             {
                 if (TutorialBoardManager.sudokuBoard.getValue(1, 2) == 8)
-                    TutorialBoardManager.spawnMod(1, 1, 2);
+                    TutorialBoardManager.spawnMod(1, 2, 1);
                 else
-                    TutorialBoardManager.spawnMod(1, 0, 0);
+                    TutorialBoardManager.spawnMod(1, 1, 2);
                 TutorialBoardManager.modPanel.gameObject.SetActive(false);
             }
         }
