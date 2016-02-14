@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Victory : MonoBehaviour
+public class victoryManager : MonoBehaviour
 {
     public string newpuzzle;
     public GameObject PauseMenu;
