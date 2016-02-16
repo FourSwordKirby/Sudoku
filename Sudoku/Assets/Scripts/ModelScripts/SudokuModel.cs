@@ -8,18 +8,6 @@ using System.Linq;
 
 public class SudokuModel : MonoBehaviour {
 
-    //Tutorial Boards
-    //mySudokuBoard = new List<List<int>>(9);
-    //mySudokuBoard.Add(new List<int>() { 2, 9, 6, 3, 1, 8, 5, 7, 4 });
-    //mySudokuBoard.Add(new List<int>() { 5, 8, 4, 9, 7, 2, 6, 1, 3 });
-    //mySudokuBoard.Add(new List<int>() { 7, 1, 3, 6, 4, 5, 2, 8, 9 });
-    //mySudokuBoard.Add(new List<int>() { 6, 2, 5, 8, 9, 7, 3, 4, 1 });
-    //mySudokuBoard.Add(new List<int>() { 9, 3, 1, 4, 2, 6, 8, 5, 7 });
-    //mySudokuBoard.Add(new List<int>() { 4, 7, 8, 5, 3, 1, 9, 2, 6 });
-    //mySudokuBoard.Add(new List<int>() { 1, 6, 7, 2, 5, 3, 4, 9, 8 });
-    //mySudokuBoard.Add(new List<int>() { 8, 5, 9, 7, 6, 4, 1, 3, 2 });
-    //mySudokuBoard.Add(new List<int>() { 3, 4, 2, 1, 8, 9, 7, 6, 5 });
-
     public static int[,] generateBoard()
     {
         int r = Random.Range(0, 9);//and.nextInt(9);

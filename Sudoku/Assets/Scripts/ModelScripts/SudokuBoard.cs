@@ -16,17 +16,27 @@ public class SudokuBoard: MonoBehaviour {
     public float horizontalDivSize;
     public float verticalDivSize;
 
-    public bool isTutorial;
+    public SudokuManager sudokuManager;
 
-    void Start()
+    void Awake()
     {
-        
+        sudokuManager = GameObject.FindObjectOfType<SudokuManager>();
     }
 
     public void instantiateBoard()
     {
         sudokuBoard = SudokuModel.generateBoard();
+        spawnBoard(sudokuBoard);
+    }
 
+    public void instantiateBoard(int[,] desiredBoard)
+    {
+        sudokuBoard = desiredBoard;
+        spawnBoard(sudokuBoard);
+    }
+
+    private void spawnBoard(int[,] boardToSpawn)
+    {
         Apartments = new Residence[9, 9];
         for (int i = 0; i < 9; i++)
         {
@@ -37,7 +47,7 @@ public class SudokuBoard: MonoBehaviour {
                 apartment.transform.localPosition = new Vector2(i * aptWidth + (i / 3) * horizontalDivSize, j * -aptHeight - (j / 3) * verticalDivSize);
                 Apartments[i, j] = apartment.GetComponent<Residence>();
 
-                apartment.GetComponent<Residence>().happiness = sudokuBoard[i, j];
+                apartment.GetComponent<Residence>().happiness = boardToSpawn[i, j];
                 apartment.GetComponent<Residence>().row = i;
                 apartment.GetComponent<Residence>().col = j;
             }
@@ -103,11 +113,14 @@ public class SudokuBoard: MonoBehaviour {
 
         if (problemSpaces.Count == 0)
         {
-            if (!isTutorial)
-                GameManager.Win();
-            else
-                TutorialGameManager.Progress();
+            sudokuManager.BoardCompleted();
         }
+    }
+
+    public bool isCompleted()
+    {
+        List<Vector3> problemSpaces = SudokuModel.resolveBoard(sudokuBoard);
+        return (problemSpaces.Count == 0);
     }
 
     public int getValue(int x, int y)

@@ -2,20 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : SudokuManager{
 
-    public static SudokuBoard sudokuBoard;
-    public static ModifierPanel modPanel;
-
-    public static Pause pauseComponent;
-
+    public SudokuBoard sudokuBoard;
+    public ModifierPanel modPanel;
 
 	// Use this for initialization
 	void Start () {
-        sudokuBoard = GameObject.FindObjectOfType<SudokuBoard>();
-        modPanel = GameObject.FindObjectOfType<ModifierPanel>();
-        pauseComponent = GameManager.FindObjectOfType<Pause>();
-
         sudokuBoard.instantiateBoard();
         int[] modifiers = createModifiers(Random.Range(3, 6));
         foreach (int mod in modifiers)
@@ -53,23 +46,28 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
-    void Update()
-    {
-    }
-
-    //broken don't use
-    /*
-    public void restart()
-    {
-        modPanel.resetMods();
-    }
-     */
-
-	//Plays in the win condition
-    public static void Win()
+    override public void BoardCompleted()
     {
         Debug.Log("Win");
         Application.LoadLevel("VictoryScene");
+    }
+
+    override public void ApplyMod(int mod, int x, int y)
+    {
+        sudokuBoard.applyMod(mod, x, y);
+        Debug.Log("applying mod");
+    }
+
+    override public void RemoveMod(int mod, int x, int y)
+    {
+        sudokuBoard.removeMod(mod, x, y);
+        Debug.Log("removing mod");
+    }
+
+    override public int GetValue(int x, int y)
+    {
+        Debug.Log("getting value");
+        return sudokuBoard.getValue(x, y);
     }
 
     int[] createModifiers(int modifierCount)

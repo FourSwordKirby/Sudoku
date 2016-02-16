@@ -50,32 +50,17 @@ public class ModifierPanel : MonoBehaviour {
                 break;
         }
         apt.GetComponent<Residence>().originalColor = Color.white;
+        apt.GetComponent<Residence>().numberRenderer.gameObject.transform.position += new Vector3(1.0f, 0.0f, 0.0f);
+
 
         GameObject modifier = GameObject.Instantiate(ModPrefab);
         modifier.transform.SetParent(this.transform);
         modifier.transform.position = new Vector2(this.transform.position.x, this.transform.position.y - Modifiers.Count * spacing);
-        modifier.GetComponent<Modifier>().value = mod;
+        modifier.GetComponent<Modifier>().setModifier(mod);
         modifier.GetComponent<Modifier>().originalResidence = apt.GetComponent<Residence>();
         modifier.GetComponent<Modifier>().spawnInRoom(apt.GetComponent<Residence>());
         modifier.GetComponent<Modifier>().isTutorial = isTutorial;
 
         Modifiers.Add(modifier.GetComponent<Modifier>());
     }
-
-    //broken don't use
-    /*
-    public void resetMods()
-    {
-        foreach(Modifier mod in Modifiers)
-        {
-            if (mod.residence != mod.originalResidence)
-            {
-
-                GameManager.sudokuBoard.applyMod(-mod.value, mod.residence.row, mod.residence.col);
-                mod.residence = mod.originalResidence;
-            }
-            mod.spawnInRoom(mod.originalResidence);
-        }
-    }
-     */
 }

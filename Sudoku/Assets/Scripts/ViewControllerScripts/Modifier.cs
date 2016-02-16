@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Modifier : MonoBehaviour
 {
-    public int value;
+    public int value{get; private set;}
     public Sprite[] modSprites;
     public Residence originalResidence;
     public Residence residence;
@@ -22,12 +22,10 @@ public class Modifier : MonoBehaviour
     public Vector3 pickupScale;
     public Vector3 residentScale;
 
-
-    private Vector3 z_offset = new Vector3(0, 0, -1.0f);
-
     public bool isTutorial;
 
     /*self-references*/
+    private SudokuManager sudokuManager;
     private SpriteRenderer spriteRender;
     private Rigidbody2D selfBody;
     private Collider2D triggerBox;
@@ -38,8 +36,6 @@ public class Modifier : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        this.transform.position += z_offset;
-
         originalPosition = Vector3.zero;
         residence = originalResidence;
         selected = false;
@@ -47,15 +43,18 @@ public class Modifier : MonoBehaviour
         spriteRender = this.GetComponent<SpriteRenderer>();
         selfBody = this.GetComponent<Rigidbody2D>();
         triggerBox = this.gameObject.GetComponent<Collider2D>();
+
+        sudokuManager = GameObject.FindObjectOfType<SudokuManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void setModifier(int mod)
     {
+        value = mod;
         //Uses value-1 because we're 0 indexing
         switch (value)
         {
-            case -3: 
+            case -3:
                 spriteRender.sprite = modSprites[0];
                 break;
             case -2:
@@ -86,7 +85,7 @@ public class Modifier : MonoBehaviour
     {
         residence = room;
         room.deselect();
-        this.transform.position = room.transform.position + z_offset;
+        this.transform.position = room.transform.position;
         this.collisionBox.enabled = true;
         this.selfBody.isKinematic = false;
     }
@@ -96,22 +95,12 @@ public class Modifier : MonoBehaviour
     {
         selected = true;
         pickUp();
-        ///// audio here
 
-        if (!isTutorial)
+        if (residence != null && residence.isApartment())
         {
-            if (residence != null && residence.isApartment())
-            {
-                GameManager.sudokuBoard.removeMod(value, residence.row, residence.col);
-            }
+            sudokuManager.RemoveMod(value, residence.row, residence.col);
         }
-        else
-        {
-            if (residence != null && residence.isApartment())
-            {
-                TutorialBoardManager.sudokuBoard.removeMod(value, residence.row, residence.col);
-            }
-        }
+
         originalPosition = this.transform.position;
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
@@ -133,25 +122,13 @@ public class Modifier : MonoBehaviour
             int x = residence.row;
             int y = residence.col;
             residence.deselect();
-            if (!isTutorial)
+
+            if (!(sudokuManager.GetValue(x, y) + value < 0 || sudokuManager.GetValue(x, y) + value > 8))
             {
-                if (!(GameManager.sudokuBoard.getValue(x, y) + value < 0 || GameManager.sudokuBoard.getValue(x, y) + value > 8))
-                {
-                    spawnInRoom(residence);
-                    GameManager.sudokuBoard.applyMod(value, residence.row, residence.col);
-                    return;
-                }
+                spawnInRoom(residence);
+                sudokuManager.ApplyMod(value, residence.row, residence.col);
+                return;
             }
-            else
-            {
-                if (!(TutorialBoardManager.sudokuBoard.getValue(x, y) + value < 0 || TutorialBoardManager.sudokuBoard.getValue(x, y) + value > 8))
-                {
-                    spawnInRoom(residence);
-                    TutorialBoardManager.sudokuBoard.applyMod(value, residence.row, residence.col);
-                    return;
-                }
-            }
-            
         }
         spawnInRoom(originalResidence);
     }

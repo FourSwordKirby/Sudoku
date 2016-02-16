@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d9b9745f5e7cedc49a7c13d8b8b80bfc
-timeCreated: 1455228431
+timeCreated: 1455658433
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -16,6 +16,7 @@ TextureImporter:
     21300018: modifierSprites_10
     21300020: modifierSprites_11
     21300022: modifierSprites_12
+    21300024: modifierSprites_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -65,133 +66,67 @@ TextureImporter:
     - name: modifierSprites_0
       rect:
         serializedVersion: 2
-        x: 53
-        y: 125
-        width: 10
-        height: 12
+        x: 0
+        y: 24
+        width: 23
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: modifierSprites_1
       rect:
         serializedVersion: 2
-        x: 91
-        y: 127
-        width: 26
-        height: 25
+        x: 23
+        y: 24
+        width: 23
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: modifierSprites_2
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 24
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: modifierSprites_3
       rect:
         serializedVersion: 2
-        x: 13
-        y: 114
-        width: 12
-        height: 11
+        x: 0
+        y: 0
+        width: 23
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: modifierSprites_4
       rect:
         serializedVersion: 2
-        x: 22
-        y: 76
-        width: 12
-        height: 15
+        x: 23
+        y: 0
+        width: 23
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: modifierSprites_5
       rect:
         serializedVersion: 2
-        x: 58
-        y: 88
-        width: 7
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: modifierSprites_6
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 85
-        width: 13
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: modifierSprites_7
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 49
-        width: 10
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: modifierSprites_8
-      rect:
-        serializedVersion: 2
-        x: 91
-        y: 52
-        width: 26
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: modifierSprites_9
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 38
-        width: 24
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: modifierSprites_10
-      rect:
-        serializedVersion: 2
-        x: 22
+        x: 46
         y: 0
-        width: 12
-        height: 15
+        width: 23
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: modifierSprites_11
-      rect:
-        serializedVersion: 2
-        x: 58
-        y: 12
-        width: 7
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: modifierSprites_12
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 9
-        width: 10
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     outline: []

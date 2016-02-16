@@ -231,7 +231,6 @@ MonoBehaviour:
   aptHeight: 0.9
   horizontalDivSize: 0.05
   verticalDivSize: 0.19
-  isTutorial: 0
 --- !u!1001 &275666001
 Prefab:
   m_ObjectHideFlags: 0
@@ -271,10 +270,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 104102, guid: 9609fee88211550449cc10ae10b0b0f1, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9609fee88211550449cc10ae10b0b0f1, type: 2}
   m_IsPrefabParent: 0
@@ -305,6 +300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac00b7ddc8595464da8bf441078cf128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sudokuBoard: {fileID: 250057304}
+  modPanel: {fileID: 1125375808}
 --- !u!4 &278369010
 Transform:
   m_ObjectHideFlags: 0
@@ -362,7 +359,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 102104, guid: 73aefc1ead5de304cb46d576ab8fa7c7, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11412644, guid: 73aefc1ead5de304cb46d576ab8fa7c7, type: 2}
       propertyPath: m_UiScaleMode
@@ -543,7 +540,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -305, y: -235.47}
+  m_AnchoredPosition: {x: -290, y: -222}
   m_SizeDelta: {x: 267, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794777651
@@ -566,11 +563,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_Font: {fileID: 12800000, guid: 72b23acedf9ca7445a965e6d6e8e3a00, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 0
     m_MaxSize: 50
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -686,7 +683,7 @@ GameObject:
   - 4: {fileID: 1125375809}
   - 114: {fileID: 1125375808}
   m_Layer: 0
-  m_Name: Modifiers
+  m_Name: Modifier Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -714,7 +711,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1125375807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.21, y: 2.96, z: 0}
+  m_LocalPosition: {x: -5.74, y: 2.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1212,11 +1209,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 458366, guid: e181996600cc78e4599786b73abbf85c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.66
+      value: -4.09
       objectReference: {fileID: 0}
     - target: {fileID: 458366, guid: e181996600cc78e4599786b73abbf85c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.05
+      value: 3.75
       objectReference: {fileID: 0}
     - target: {fileID: 458366, guid: e181996600cc78e4599786b73abbf85c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1245,18 +1242,6 @@ Prefab:
     - target: {fileID: 151728, guid: e181996600cc78e4599786b73abbf85c, type: 2}
       propertyPath: m_Name
       value: Modifier (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 151728, guid: e181996600cc78e4599786b73abbf85c, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5075410, guid: e181996600cc78e4599786b73abbf85c, type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6131758, guid: e181996600cc78e4599786b73abbf85c, type: 2}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e181996600cc78e4599786b73abbf85c, type: 2}

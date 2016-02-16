@@ -5,18 +5,12 @@ public class TutorialBoardManager : MonoBehaviour {
     public static SudokuBoard sudokuBoard;
     public static ModifierPanel modPanel;
 
-    public static Pause pauseComponent;
-
-
 	// Use this for initialization
 	void Start () {
         sudokuBoard = GameObject.FindObjectOfType<SudokuBoard>();
         modPanel = GameObject.FindObjectOfType<ModifierPanel>();
-        pauseComponent = GameManager.FindObjectOfType<Pause>();
 
         sudokuBoard.instantiateBoard();
-        sudokuBoard.isTutorial = true;
-        modPanel.isTutorial = true;
         /*
         int[] modifiers = createModifiers(3);
         foreach (int mod in modifiers)
