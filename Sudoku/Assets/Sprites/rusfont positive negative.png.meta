@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d6b183f9276b1c146993efb30c756e0e
-timeCreated: 1455661540
+timeCreated: 1455665723
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -56,138 +56,145 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: rusfont positive negative_1
-      rect:
-        serializedVersion: 2
-        x: 164
-        y: 189
-        width: 51
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -4.5, y: 7.5}
-        - {x: -5.5, y: 1.5}
-        - {x: -17.5, y: -2.5}
-        - {x: -19.5, y: -4.5}
-        - {x: -19.5, y: -12.5}
-        - {x: -7.5, y: -19.5}
-        - {x: 14.5, y: -19.5}
-        - {x: 14.5, y: 8.5}
-        - {x: 13.5, y: 13.5}
-        - {x: 12.5, y: 14.5}
-        - {x: 2.5, y: 14.5}
-        - {x: -1.5, y: 13.5}
-    - name: rusfont positive negative_3
-      rect:
-        serializedVersion: 2
-        x: 166
-        y: 145
-        width: 47
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 12.5, y: 15}
-        - {x: 0.5, y: 15}
-        - {x: -5.5, y: 9}
-        - {x: -4.5, y: 3}
-        - {x: -2.5, y: 1}
-        - {x: 2.5, y: 1}
-        - {x: 4.5, y: 3}
-        - {x: 5.5, y: 0}
-        - {x: 1.5, y: 1}
-        - {x: -18.5, y: -1}
-        - {x: -19.5, y: -4}
-        - {x: -19.5, y: -14}
-        - {x: -10.5, y: -19}
-        - {x: 19.5, y: -19}
-        - {x: 19.5, y: 8}
-        - {x: 18.5, y: 12}
-    - name: rusfont positive negative_5
-      rect:
-        serializedVersion: 2
-        x: 163
-        y: 92
-        width: 44
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 5, y: 14.5}
-        - {x: -2, y: 8.5}
-        - {x: 1, y: -0.5}
-        - {x: 8, y: -0.5}
-        - {x: 10, y: -5.5}
-        - {x: 12, y: -7.5}
-        - {x: 7, y: -5.5}
-        - {x: 1, y: -2.5}
-        - {x: -13, y: -2.5}
-        - {x: -15, y: -4.5}
-        - {x: -15, y: -12.5}
-        - {x: 4, y: -18.5}
-        - {x: 7, y: -19.5}
-        - {x: 22, y: -19.5}
-        - {x: 22, y: 12.5}
-        - {x: 21, y: 14.5}
     - name: rusfont positive negative_0
       rect:
         serializedVersion: 2
-        x: 74
-        y: 188
-        width: 49
-        height: 47
+        x: 0
+        y: 96
+        width: 38
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -13.5, y: 15.5}
-        - {x: -21.5, y: 7.5}
-        - {x: -21.5, y: -15.5}
-        - {x: -7.5, y: -18.5}
-        - {x: 20.5, y: -18.5}
-        - {x: 20.5, y: -6.5}
-        - {x: 15.5, y: 15.5}
+      - - {x: 7, y: 17}
+        - {x: 2, y: 14}
+        - {x: 2, y: 2}
+        - {x: 10, y: -17}
+        - {x: 19, y: -17}
+        - {x: 19, y: 17}
+      - - {x: -13, y: 12}
+        - {x: -19, y: 8}
+        - {x: -19, y: -9}
+        - {x: -12, y: -16}
+        - {x: -2, y: -16}
+        - {x: 6, y: -11}
+        - {x: 6, y: 5}
+        - {x: 2, y: 12}
+    - name: rusfont positive negative_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 96
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 17}
+        - {x: 0, y: 14}
+        - {x: 0, y: 2}
+        - {x: 8, y: -17}
+        - {x: 17, y: -17}
+        - {x: 17, y: 17}
+      - - {x: -16, y: 4}
+        - {x: -17, y: 3}
+        - {x: -17, y: -8}
+        - {x: 2, y: -8}
+        - {x: 4, y: -4}
+        - {x: 4, y: 0}
+        - {x: 0, y: 4}
     - name: rusfont positive negative_2
       rect:
         serializedVersion: 2
-        x: 73
-        y: 146
-        width: 51
-        height: 39
+        x: 0
+        y: 48
+        width: 46
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -15.5, y: 13.5}
-        - {x: -19.5, y: 12.5}
-        - {x: -25.5, y: 2.5}
-        - {x: -25.5, y: -15.5}
-        - {x: -21.5, y: -19.5}
-        - {x: 20.5, y: -19.5}
-        - {x: 20.5, y: 12.5}
-        - {x: 15.5, y: 13.5}
+      - - {x: 0, y: 17}
+        - {x: -2, y: 12}
+        - {x: -2, y: 8}
+        - {x: 2, y: 4}
+        - {x: 6, y: 4}
+        - {x: -2, y: 4}
+        - {x: -10, y: 12}
+        - {x: -15, y: 14}
+        - {x: -23, y: 11}
+        - {x: -23, y: -14}
+        - {x: -22, y: -17}
+        - {x: 23, y: -17}
+        - {x: 23, y: 17}
+    - name: rusfont positive negative_3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 42
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: 17}
+        - {x: -4, y: 12}
+        - {x: -4, y: 8}
+        - {x: 0, y: 4}
+        - {x: 4, y: 4}
+        - {x: -20, y: 4}
+        - {x: -21, y: 3}
+        - {x: -21, y: -9}
+        - {x: -8, y: -17}
+        - {x: 21, y: -17}
+        - {x: 21, y: 17}
     - name: rusfont positive negative_4
       rect:
         serializedVersion: 2
-        x: 73
-        y: 88
-        width: 50
-        height: 47
+        x: 0
+        y: 0
+        width: 46
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -19, y: 19.5}
-        - {x: -25, y: 15.5}
-        - {x: -25, y: -14.5}
-        - {x: 17, y: -14.5}
-        - {x: 21, y: -12.5}
-        - {x: 21, y: 17.5}
-        - {x: 17, y: 19.5}
+      - - {x: -2, y: 17}
+        - {x: -7, y: 16}
+        - {x: -4, y: 7}
+        - {x: 5, y: -2}
+        - {x: -10, y: 12}
+        - {x: -15, y: 14}
+        - {x: -23, y: 6}
+        - {x: -23, y: -9}
+        - {x: -15, y: -17}
+        - {x: 23, y: -17}
+        - {x: 23, y: 17}
+    - name: rusfont positive negative_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 42
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: 17}
+        - {x: -9, y: 16}
+        - {x: -6, y: 7}
+        - {x: 3, y: -2}
+        - {x: -4, y: 4}
+        - {x: -20, y: 4}
+        - {x: -21, y: 3}
+        - {x: -21, y: -12}
+        - {x: -2, y: -17}
+        - {x: 21, y: -17}
+        - {x: 21, y: 17}
     outline: []
   spritePackingTag: 
   userData: 

@@ -21,6 +21,22 @@ public class ModifierPanel : MonoBehaviour {
 	
 	}
 
+    public void disableMods()
+    {
+        foreach (Modifier mod in Modifiers)
+        {
+            mod.enabled = false;
+        }
+    }
+
+    public void enableMods()
+    {
+        foreach (Modifier mod in Modifiers)
+        {
+            mod.enabled = true;
+        }
+    }
+
     public void addMod(int mod)
     {
         GameObject apt = GameObject.Instantiate(AptPrefab);

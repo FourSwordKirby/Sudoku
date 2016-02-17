@@ -62,19 +62,13 @@ public class TutorialGameManager : SudokuManager {
                 modPanel.addMod(-1);
                 wait = true;
                 waiting = true;
+                modPanel.disableMods();
             }
             if (dialogCounter == 7)
             {
-
                 sudokuBoard.initializeMod(1, 0, 0);
                 modPanel.addMod(1);
-                /*
-                if (TutorialBoardManager.sudokuBoard.getValue(1, 2) == 0)
-                    TutorialBoardManager.spawnMod(1, 2, 1);
-                else
-                    TutorialBoardManager.spawnMod(1, 1, 2);
-                TutorialBoardManager.modPanel.gameObject.SetActive(false);
-                 */
+                modPanel.disableMods();
             }
         }
         if (dialogCounter == 3 && dialogBox.dialogField.text == dialog[dialogCounter - 1])
@@ -90,11 +84,13 @@ public class TutorialGameManager : SudokuManager {
 
         if (dialogCounter == 5)
         {
+            modPanel.enableMods();
             wait = true;
             waiting = true;
         }
         if (dialogCounter == 10)
         {
+            modPanel.enableMods();
             wait = true;
             waiting = true;
         }

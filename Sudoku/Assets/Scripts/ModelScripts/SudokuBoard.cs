@@ -108,6 +108,7 @@ public class SudokuBoard: MonoBehaviour {
             int x = (int)problem.x;
             int y = (int)problem.y;
             int severity = (int)problem.z;
+
             Apartments[x, y].markUnresolved(severity);
         }
 

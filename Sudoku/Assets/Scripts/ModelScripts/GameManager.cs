@@ -10,40 +10,7 @@ public class GameManager : SudokuManager{
 	// Use this for initialization
 	void Start () {
         sudokuBoard.instantiateBoard();
-        int[] modifiers = createModifiers(Random.Range(3, 6));
-        foreach (int mod in modifiers)
-        {
-            int x = Random.Range(0, 9);
-            int y = Random.Range(0, 9);
-
-            while (sudokuBoard.getValue(x, y) - mod < 0 || sudokuBoard.getValue(x, y) - mod > 8)
-            {
-                x = Random.Range(0, 9);
-                y = Random.Range(0, 9);
-            }
-
-            sudokuBoard.initializeMod(mod, x, y);
-            modPanel.addMod(mod);
-        }
-        while (sudokuBoard.isSolved())
-        {
-            sudokuBoard.instantiateBoard();
-            modifiers = createModifiers(Random.Range(3, 6));
-            foreach (int mod in modifiers)
-            {
-                int x = Random.Range(0, 9);
-                int y = Random.Range(0, 9);
-
-                while (sudokuBoard.getValue(x, y) - mod < 0 || sudokuBoard.getValue(x, y) - mod > 8)
-                {
-                    x = Random.Range(0, 9);
-                    y = Random.Range(0, 9);
-                }
-
-                sudokuBoard.initializeMod(mod, x, y);
-                modPanel.addMod(mod);
-            }
-        }
+        populateBoard(0);
 	}
 
     override public void BoardCompleted()
@@ -70,6 +37,33 @@ public class GameManager : SudokuManager{
         return sudokuBoard.getValue(x, y);
     }
 
+    void populateBoard(int difficulty)
+    {
+        int[] modifiers = createModifiers(Random.Range(3, 6));
+        foreach (int mod in modifiers)
+        {
+            int x = 0;
+            int y = 0;
+            int init = 0;
+            do
+            {
+                sudokuBoard.initializeMod(-init, x, y);
+                x = Random.Range(0, 9);
+                y = Random.Range(0, 9);
+
+                while (sudokuBoard.getValue(x, y) - mod < 0 || sudokuBoard.getValue(x, y) - mod > 8)
+                {
+                    x = Random.Range(0, 9);
+                    y = Random.Range(0, 9);
+                }
+                sudokuBoard.initializeMod(mod, x, y);
+                init = mod;
+            } while (sudokuBoard.isSolved());
+
+            modPanel.addMod(mod);
+        }
+    }
+
     int[] createModifiers(int modifierCount)
     {
         int[] numberModifiers = new int[modifierCount];
@@ -77,7 +71,7 @@ public class GameManager : SudokuManager{
             if(Random.Range(0.0f, 1.0f) > 0.5f)
                 numberModifiers[i] = Random.Range(1, 4);
             else
-                numberModifiers[i] = -Random.Range(1, 3);
+                numberModifiers[i] = -Random.Range(1, 4);
         }
         return numberModifiers;
     }

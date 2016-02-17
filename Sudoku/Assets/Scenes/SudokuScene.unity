@@ -231,6 +231,7 @@ MonoBehaviour:
   aptHeight: 0.9
   horizontalDivSize: 0.05
   verticalDivSize: 0.19
+  sudokuManager: {fileID: 0}
 --- !u!1001 &275666001
 Prefab:
   m_ObjectHideFlags: 0

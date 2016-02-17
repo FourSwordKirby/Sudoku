@@ -70,19 +70,9 @@ public class Residence : MonoBehaviour {
 
     public void markUnresolved(int severity)
     {
-        /*
-        if (severity == 1)
-        {
-            roomRenderer.color = Color.blue;
-        }
-        if (severity == 2)
-        {
-            roomRenderer.color = Color.blue;
-        }
-        */
         if (severity == 3)
         {
-            roomRenderer.color = new Color(0.5f, 0.0f, 0.0f);
+            roomRenderer.color = new Color(1.0f, 0.0f, 0.0f, 0.4f);
         }
         originalColor = roomRenderer.color;
     }
@@ -92,17 +82,6 @@ public class Residence : MonoBehaviour {
         roomRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         originalColor = roomRenderer.color;
     }
-
-    //Temporary graphical measures
-    /*void OnMouseEnter()
-    {
-        spriteRender.color = Color.black;
-    }
-
-    void OnMouseExit()
-    {
-        spriteRender.color = Color.white;
-    }*/
 
     public bool isApartment()
     {
