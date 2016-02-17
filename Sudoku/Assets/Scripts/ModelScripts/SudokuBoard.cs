@@ -67,7 +67,6 @@ public class SudokuBoard: MonoBehaviour {
     {
         sudokuBoard[x, y] = Mathf.Clamp( sudokuBoard[x, y] - mod, 0, 8);
         Apartments[x, y].happiness = sudokuBoard[x, y];
-        checkBoard();
     }
 
     public void applyMod(int mod, int x, int y)

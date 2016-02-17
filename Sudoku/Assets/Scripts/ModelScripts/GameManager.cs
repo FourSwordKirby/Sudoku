@@ -6,11 +6,13 @@ public class GameManager : SudokuManager{
 
     public SudokuBoard sudokuBoard;
     public ModifierPanel modPanel;
+    public int level;
 
 	// Use this for initialization
 	void Start () {
         sudokuBoard.instantiateBoard();
-        populateBoard(0);
+        populateBoard(level);
+        sudokuBoard.checkBoard();
 	}
 
     override public void BoardCompleted()
@@ -39,28 +41,63 @@ public class GameManager : SudokuManager{
 
     void populateBoard(int difficulty)
     {
-        int[] modifiers = createModifiers(Random.Range(3, 6));
-        foreach (int mod in modifiers)
+        if (difficulty == 0)
         {
-            int x = 0;
-            int y = 0;
-            int init = 0;
-            do
+            int[] modifiers = createModifiers(Random.Range(3, 6));
+            List<Vector2> modPositions = new List<Vector2>(); 
+            foreach (int mod in modifiers)
             {
-                sudokuBoard.initializeMod(-init, x, y);
-                x = Random.Range(0, 9);
-                y = Random.Range(0, 9);
-
-                while (sudokuBoard.getValue(x, y) - mod < 0 || sudokuBoard.getValue(x, y) - mod > 8)
+                int x = 0;
+                int y = 0;
+                int init = 0;
+                do
                 {
+                    sudokuBoard.initializeMod(-init, x, y);
                     x = Random.Range(0, 9);
                     y = Random.Range(0, 9);
-                }
-                sudokuBoard.initializeMod(mod, x, y);
-                init = mod;
-            } while (sudokuBoard.isSolved());
 
-            modPanel.addMod(mod);
+                    while (modPositions.Contains(new Vector2(x, y)) || sudokuBoard.getValue(x, y) - mod < 0 || sudokuBoard.getValue(x, y) - mod > 8)
+                    {
+                        x = Random.Range(0, 9);
+                        y = Random.Range(0, 9);
+                    }
+                    sudokuBoard.initializeMod(mod, x, y);
+                    init = mod;
+                } while (sudokuBoard.isSolved());
+
+                modPanel.addMod(mod);
+                modPositions.Add(new Vector2(x, y));
+            }
+        }
+        if (difficulty == 1)
+        {
+            int[] modifiers = createModifiers(Random.Range(3, 6));
+            List<Vector2> modPositions = new List<Vector2>();
+
+            int x = Random.Range(0, 9);
+            int y = Random.Range(0, 9);
+
+            foreach (int mod in modifiers)
+            {
+                int init = 0;
+                do
+                {
+                    sudokuBoard.initializeMod(-init, x, y);
+
+                    while (modPositions.Contains(new Vector2(x, y)) || sudokuBoard.getValue(x, y) - mod < 0 || sudokuBoard.getValue(x, y) - mod > 8)
+                    {
+                        x += Random.Range(-1, 2);
+                        y += Random.Range(-1, 2);
+                        x = Mathf.Clamp(x, 0, 8);
+                        y = Mathf.Clamp(y, 0, 8);
+                    }
+                    sudokuBoard.initializeMod(mod, x, y);
+                    init = mod;
+                } while (sudokuBoard.isSolved());
+
+                modPanel.addMod(mod);
+                modPositions.Add(new Vector2(x, y));
+            }
         }
     }
 
