@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1dbc594affa8bbf428a7e1c8904cded7
-timeCreated: 1455053431
+guid: ec106ea676259c34eafcb5ae72409f69
+timeCreated: 1455664265
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -58,22 +58,22 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 67
-        height: 91
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 1
+        width: 63
+        height: 90
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 18.5, y: 38.5}
-        - {x: -17.5, y: 38.5}
-        - {x: -26.5, y: 34.5}
-        - {x: -26.5, y: -20.5}
-        - {x: -13.5, y: -23.5}
-        - {x: 10.5, y: -23.5}
-        - {x: 19.5, y: -17.5}
-        - {x: 20.5, y: -6.5}
-        - {x: 20.5, y: 36.5}
+      - - {x: 52, y: -7}
+        - {x: 16, y: -7}
+        - {x: 7, y: -11}
+        - {x: 7, y: -66}
+        - {x: 20, y: -69}
+        - {x: 44, y: -69}
+        - {x: 53, y: -63}
+        - {x: 54, y: -52}
+        - {x: 54, y: -9}
     - name: titleButtons_1
       rect:
         serializedVersion: 2
@@ -82,7 +82,7 @@ TextureImporter:
         width: 67
         height: 91
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -26.5, y: 38.5}
@@ -107,7 +107,7 @@ TextureImporter:
         width: 67
         height: 91
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -19.5, y: 38.5}
@@ -127,7 +127,7 @@ TextureImporter:
         width: 67
         height: 91
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: 24.5, y: 38.5}
