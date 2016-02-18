@@ -60,6 +60,7 @@ public class TutorialGameManager : SudokuManager {
             {
                 sudokuBoard.initializeMod(-1, 1, 1);
                 modPanel.addMod(-1);
+                sudokuBoard.checkBoard();
                 wait = true;
                 waiting = true;
                 modPanel.disableMods();
@@ -68,6 +69,7 @@ public class TutorialGameManager : SudokuManager {
             {
                 sudokuBoard.initializeMod(1, 0, 0);
                 modPanel.addMod(1);
+                sudokuBoard.checkBoard();
                 modPanel.disableMods();
             }
         }
