@@ -30,6 +30,8 @@ public class Modifier : MonoBehaviour
     public Rigidbody2D selfBody;
     public Collider2D triggerBox;
     public Collider2D collisionBox;
+	public AudioSource clickSound;
+	public AudioSource mistakeSound;
 
 
 
@@ -104,6 +106,7 @@ public class Modifier : MonoBehaviour
         originalPosition = this.transform.position;
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+		clickSound.Play ();
     }
 
     void OnMouseDrag()
@@ -123,12 +126,13 @@ public class Modifier : MonoBehaviour
             int y = residence.col;
             residence.deselect();
 
-            if (!(sudokuManager.GetValue(x, y) + value < 0 || sudokuManager.GetValue(x, y) + value > 8))
-            {
-                spawnInRoom(residence);
-                sudokuManager.ApplyMod(value, residence.row, residence.col);
-                return;
-            }
+			if (!(sudokuManager.GetValue (x, y) + value < 0 || sudokuManager.GetValue (x, y) + value > 8)) {
+				spawnInRoom (residence);
+				sudokuManager.ApplyMod (value, residence.row, residence.col);
+				return;
+			} else {
+				mistakeSound.Play ();
+			}
         }
         spawnInRoom(originalResidence);
     }
