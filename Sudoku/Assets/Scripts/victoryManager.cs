@@ -3,11 +3,10 @@ using System.Collections;
 
 public class victoryManager : MonoBehaviour
 {
-    public string newpuzzle;
     public GameObject PauseMenu;
     public DialogBox dialogBox;
 
-    public TextAsset textFile;
+    public TextAsset[] textFiles;
 
     private string[] dialog;
     private int dialogCounter;
@@ -17,6 +16,7 @@ public class victoryManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        TextAsset textFile = textFiles[Random.Range(0, textFiles.Length)];
         this.dialog = textFile.text.Substring(textFile.text.IndexOf('\n') + 1).Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
         this.dialogCounter = 0;
 

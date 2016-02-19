@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class ModifierPanel : MonoBehaviour {
     List<Modifier> Modifiers;
+    List<Residence> Apartments;
 
     public GameObject ModPrefab;
     public GameObject AptPrefab;
@@ -14,6 +15,7 @@ public class ModifierPanel : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         Modifiers = new List<Modifier>();
+        Apartments = new List<Residence>();
 	}
 	
 	// Update is called once per frame
@@ -35,6 +37,21 @@ public class ModifierPanel : MonoBehaviour {
         {
             mod.gameObject.active = true;
         }
+    }
+
+    public void reset()
+    {
+        foreach (Modifier mod in Modifiers)
+        {
+            Destroy(mod.gameObject);
+        }
+        foreach (Residence apt in Apartments)
+        {
+            Destroy(apt.gameObject);
+        }
+
+        Modifiers = new List<Modifier>();
+        Apartments = new List<Residence>();
     }
 
     public void addMod(int mod)
@@ -68,6 +85,7 @@ public class ModifierPanel : MonoBehaviour {
         apt.GetComponent<Residence>().originalColor = Color.white;
         apt.GetComponent<Residence>().numberRenderer.gameObject.transform.position += new Vector3(1.0f, 0.0f, 0.0f);
 
+        Apartments.Add(apt.GetComponent<Residence>());
 
         GameObject modifier = GameObject.Instantiate(ModPrefab);
         modifier.transform.SetParent(this.transform);

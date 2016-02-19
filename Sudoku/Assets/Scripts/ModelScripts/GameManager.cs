@@ -4,20 +4,58 @@ using System.Collections.Generic;
 
 public class GameManager : SudokuManager{
 
+    public static GameManager instance;
+
     public SudokuBoard sudokuBoard;
     public ModifierPanel modPanel;
     public int level;
 
+    void Awake()
+    {
+        sudokuBoard = GameObject.FindObjectOfType<SudokuBoard>();
+        modPanel = GameObject.FindObjectOfType<ModifierPanel>();
+
+        DontDestroyOnLoad(this.gameObject);
+    }
+
 	// Use this for initialization
 	void Start () {
+        //Check if instance already exists
+        if (instance == null)
+
+            //if not, set instance to this
+            instance = this;
+
+        //If instance already exists and it's not this:
+        else if (instance != this)
+        {
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);
+            //Now it can start the game
+            instance.startGame();
+            return;
+        }
+
         sudokuBoard.instantiateBoard();
         populateBoard(level);
         sudokuBoard.checkBoard();
 	}
 
+    public void startGame()
+    {
+        sudokuBoard = GameObject.FindObjectOfType<SudokuBoard>();
+        modPanel = GameObject.FindObjectOfType<ModifierPanel>();
+
+        modPanel.reset();
+        sudokuBoard.instantiateBoard();
+        populateBoard(level);
+        sudokuBoard.checkBoard();
+    }
+
     override public void BoardCompleted()
     {
         Debug.Log("Win");
+        level++;
         Application.LoadLevel("VictoryScene");
     }
 
@@ -43,7 +81,7 @@ public class GameManager : SudokuManager{
     {
         if (difficulty == 0)
         {
-            int[] modifiers = createModifiers(Random.Range(3, 6));
+            int[] modifiers = createModifiers(Random.Range(2, 5));
             List<Vector2> modPositions = new List<Vector2>(); 
             foreach (int mod in modifiers)
             {
@@ -69,7 +107,7 @@ public class GameManager : SudokuManager{
                 modPositions.Add(new Vector2(x, y));
             }
         }
-        if (difficulty == 1)
+        if (difficulty >= 1)
         {
             int[] modifiers = createModifiers(Random.Range(3, 6));
             List<Vector2> modPositions = new List<Vector2>();

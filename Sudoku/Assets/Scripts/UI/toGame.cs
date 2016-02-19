@@ -7,4 +7,9 @@ public class toGame : MonoBehaviour {
     {
         Application.LoadLevel(sceneToChangeTo);
     }
+
+    public void NextLevel()
+    {
+        Application.LoadLevel("SudokuScene");
+    }
 }
