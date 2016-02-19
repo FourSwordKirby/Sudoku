@@ -109,7 +109,7 @@ public class GameManager : SudokuManager{
         }
         if (difficulty >= 1)
         {
-            int[] modifiers = createModifiers(Random.Range(3, 6));
+            int[] modifiers = createModifiers(Random.Range(3, 6)) + level;
             List<Vector2> modPositions = new List<Vector2>();
 
             int x = Random.Range(0, 9);
