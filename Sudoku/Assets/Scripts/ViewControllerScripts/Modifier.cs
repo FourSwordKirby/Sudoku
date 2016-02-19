@@ -27,8 +27,8 @@ public class Modifier : MonoBehaviour
     /*self-references*/
     private SudokuManager sudokuManager;
     private SpriteRenderer spriteRender;
-    private Rigidbody2D selfBody;
-    private Collider2D triggerBox;
+    public Rigidbody2D selfBody;
+    public Collider2D triggerBox;
     public Collider2D collisionBox;
 
 

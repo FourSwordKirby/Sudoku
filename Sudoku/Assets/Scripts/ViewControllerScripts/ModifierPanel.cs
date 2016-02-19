@@ -25,7 +25,7 @@ public class ModifierPanel : MonoBehaviour {
     {
         foreach (Modifier mod in Modifiers)
         {
-            mod.enabled = false;
+            mod.gameObject.active = false;
         }
     }
 
@@ -33,7 +33,7 @@ public class ModifierPanel : MonoBehaviour {
     {
         foreach (Modifier mod in Modifiers)
         {
-            mod.enabled = true;
+            mod.gameObject.active = true;
         }
     }
 
