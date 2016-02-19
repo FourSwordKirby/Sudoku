@@ -70,9 +70,17 @@ public class Residence : MonoBehaviour {
 
     public void markUnresolved(int severity)
     {
+        if (severity == 1)
+        {
+            roomRenderer.color = new Color(1.0f, 0.0f, 0.0f, 0.1f);
+        } 
+        if (severity == 2)
+        {
+            roomRenderer.color = new Color(1.0f, 0.0f, 0.0f, 0.2f);
+        }
         if (severity == 3)
         {
-            roomRenderer.color = new Color(1.0f, 0.0f, 0.0f, 0.4f);
+            roomRenderer.color = new Color(1.0f, 0.0f, 0.0f, 0.8f);
         }
         originalColor = roomRenderer.color;
     }

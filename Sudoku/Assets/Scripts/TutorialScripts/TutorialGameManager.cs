@@ -63,7 +63,7 @@ public class TutorialGameManager : SudokuManager {
                 wait = true;
                 waiting = true;
             }
-            if (dialogCounter == 7)
+            if (dialogCounter == 8)
             {
                 sudokuBoard.initializeMod(1, 0, 0);
                 sudokuBoard.checkBoard();
@@ -80,14 +80,14 @@ public class TutorialGameManager : SudokuManager {
             }
         }
 
-        if (dialogCounter == 5)
+        if (dialogCounter == 6)
         {
             if(wait == false)
                 modPanel.addMod(-1);
             wait = true;
             waiting = true;
         }
-        if (dialogCounter == 10)
+        if (dialogCounter == 11)
         {
             if (wait == false)
                 modPanel.addMod(1);
